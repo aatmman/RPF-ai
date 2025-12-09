@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login / Landing Page (Refined Navigation)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0da6f2",
+            "background-light": "#f5f7f8",
+            "background-dark": "#101c22",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl dark:bg-primary/30"></div>
+<div class="absolute -right-40 bottom-0 h-[32rem] w-[32rem] rounded-full bg-purple-500/10 blur-3xl dark:bg-purple-500/20"></div>
+<div class="absolute left-1/4 top-1/2 h-80 w-80 rounded-full bg-teal-500/10 blur-3xl dark:bg-teal-500/20"></div>
+</div>
+<div class="relative z-10 flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap px-10 py-5 sm:px-16 md:px-24">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">RFP.AI</h2>
+</div>
+<nav class="flex items-center gap-2">
+<a class="flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30" href="#">
+<span class="material-symbols-outlined !text-xl" style="font-variation-settings: 'FILL' 1">dashboard</span>
+Dashboard
+</a>
+<a class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-200/60 dark:text-slate-300 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-xl">description</span>
+RFP Detail
+</a>
+<a class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-200/60 dark:text-slate-300 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-xl">history</span>
+Run History
+</a>
+<a class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-200/60 dark:text-slate-300 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined !text-xl">settings</span>
+Settings
+</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-5 bg-primary/10 text-primary text-sm font-bold leading-normal tracking-[0.015em] dark:bg-primary/20">
+<span class="truncate">Sign Up</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Login</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
+<div class="grid w-full max-w-7xl grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-8 xl:gap-24">
+<div class="flex flex-col justify-center gap-8 text-center lg:text-left">
+<div class="flex flex-col gap-4">
+<h1 class="text-4xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white sm:text-5xl md:text-6xl">Win FMCG RFPs with Agentic AI</h1>
+<h2 class="text-lg font-normal leading-normal text-slate-600 dark:text-slate-300 md:text-xl">Unlock multi-agent decisioning, stock-aware pricing, and lead intelligence to create winning bids.</h2>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Request a Demo</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary/10 text-primary text-base font-bold leading-normal tracking-[0.015em] dark:bg-primary/20">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-center">
+<div class="w-full max-w-md rounded-lg bg-white/50 p-8 shadow-2xl shadow-primary/10 backdrop-blur-lg dark:bg-background-dark/50 dark:shadow-primary/20">
+<div class="flex w-full flex-col items-stretch justify-center gap-6">
+<div class="flex flex-col gap-1 text-center">
+<p class="text-2xl font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">Welcome Back</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Sign in to access your dashboard.</p>
+</div>
+<div class="flex flex-col items-stretch gap-4">
+<label class="flex flex-col flex-1">
+<p class="pb-2 text-sm font-medium leading-normal text-slate-700 dark:text-slate-300">Email Address</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-900/50 dark:text-white h-12 placeholder:text-slate-400 dark:placeholder:text-slate-500 px-4 text-base font-normal leading-normal focus:border-primary focus:ring-primary" placeholder="you@company.com" value=""/>
+</label>
+<label class="flex flex-col flex-1">
+<p class="pb-2 text-sm font-medium leading-normal text-slate-700 dark:text-slate-300">Password</p>
+<div class="relative flex w-full flex-1 items-stretch">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-900/50 dark:text-white h-12 placeholder:text-slate-400 dark:placeholder:text-slate-500 px-4 pr-10 text-base font-normal leading-normal focus:border-primary focus:ring-primary" placeholder="Enter your password" type="password" value=""/>
+<div class="text-slate-400 dark:text-slate-500 absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-xl">visibility_off</span>
+</div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<input class="form-checkbox h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-600 dark:bg-slate-800" id="remember-me" type="checkbox"/>
+<label class="text-slate-600 dark:text-slate-300" for="remember-me">Remember me</label>
+</div>
+<a class="font-medium text-primary hover:underline" href="#">Forgot Password?</a>
+</div>
+<div class="flex flex-col items-stretch gap-3">
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-4 bg-primary text-white text-base font-bold leading-normal">
+<span class="truncate">Sign In</span>
+</button>
+<button class="flex w-full min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full border border-slate-300 dark:border-slate-700 h-12 px-4 bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-200 text-base font-medium leading-normal">
+<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_105_2338)"><path d="M22.56 12.25C22.56 11.45 22.49 10.68 22.36 9.93H12.24V14.4H18.1C17.86 15.75 17.16 16.91 16.14 17.61V20.18H19.78C21.66 18.49 22.56 15.68 22.56 12.25Z" fill="#4285F4"></path><path d="M12.24 23C15.11 23 17.55 22.05 19.24 20.18L16.14 17.61C15.17 18.26 13.84 18.66 12.24 18.66C9.36 18.66 6.91 16.8 6.01 14.28H2.3V16.93C3.99 20.47 7.79 23 12.24 23Z" fill="#34A853"></path><path d="M6.01 14.28C5.8 13.68 5.68 13.04 5.68 12.38C5.68 11.72 5.8 11.08 6.01 10.48V7.83H2.3C1.63 9.17 1.25 10.73 1.25 12.38C1.25 14.03 1.63 15.59 2.3 16.93L6.01 14.28Z" fill="#FBBC05"></path><path d="M12.24 6.08C13.91 6.08 15.24 6.69 16.32 7.7L19.31 4.72C17.54 3.03 15.1 2 12.24 2C7.79 2 3.99 4.53 2.3 8.07L6.01 10.72C6.91 8.2 9.36 6.08 12.24 6.08Z" fill="#EA4335"></path></g><defs><clipPath id="clip0_105_2338"><rect fill="white" height="24" width="24"></rect></clipPath></defs></svg>
+<span class="truncate">Continue with Google</span>
+</button>
+</div>
+<div class="mt-4 flex flex-col items-center gap-4 rounded-lg bg-slate-100 p-4 dark:bg-slate-900/50">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">A Glimpse Into Your Dashboard</p>
+<div class="w-full aspect-video rounded-md bg-cover bg-center shadow-md" data-alt="A screenshot of the application dashboard showing various charts and data visualizations in a clean and modern UI." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDz_1RDDirjo3M4hvI3GSdtG0EAN6ETUsGs0EDiBUFkaakVu9j2IRbvgFGkmH7uP29Lkde4hcIFTCcVsvEmoqT41wY0ALym2XSkMOA2Hky2ZL0o8A96RwUJZv-jf9nwQzJ-D3YzMpmuHSjOADld2cLj8ACkK7Oxxz9w6O0_S47zNngWVgOcYXZ3286WZxJKYyb2vidQJdRGYEIhkCrvf95T_0Nz-Z5X-a1P1vIrDWp4YHPqd98OAFHUgbtKhw1toXGCrwvEwOJow7k')"></div>
+</div>
+<p class="text-center text-sm text-slate-500 dark:text-slate-400">
+                    Don't have an account? <a class="font-medium text-primary hover:underline" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

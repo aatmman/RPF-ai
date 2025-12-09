@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Main Dashboard (Refined Navigation)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        @layer utilities {
+          .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+          }
+        }
+      </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#3B82F6",
+              "background-light": "#f5f7f8",
+              "background-dark": "#101c22",
+              "teal": "#14B8A6",
+              "lime": "#84CC16",
+              "coral": "#F97316",
+              "text-light": "#1F2937",
+              "text-dark": "#E5E7EB",
+              "card-light": "#FFFFFF",
+              "card-dark": "#18262f",
+              "border-light": "#E5E7EB",
+              "border-dark": "#374151"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-6 py-3 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-[-0.015em]">Synapse RFP AI</h2>
+</div>
+<nav class="hidden md:flex items-center gap-2">
+<a class="flex items-center gap-2 rounded-full bg-primary/10 dark:bg-primary/20 text-primary px-4 py-2 text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-base">dashboard</span>Dashboard</a>
+<a class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">description</span>RFP Detail</a>
+<a class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">history</span>Run History</a>
+<a class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">settings</span>Settings</a>
+</nav>
+<div class="flex flex-1 justify-end items-center gap-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1-OxTcP-IwUK4F3Ix0sgX4v9bNWkdk_xwrRrU3LgYUqE9MmXK0CImkORfZjB1WiVGOYpZrp7ep9WRu-sqSOGyAMRdSBo65DHqOQiqZpPFWp890HQBpb3uVYFZvoTc-5fZn-466I0GvsuqMq14W-2vWhls5FmVCl6Ui6FBURpnJuhoe82MjiR107jJKQOC1aYy8gsp6I_VaQYi0vUONxPqZAsteAABTytt89bA8HeoOazBoLN0qHHoUAaC8MJlCi91HiL6kYsHW1M");'></div>
+</div>
+</header>
+<div class="flex flex-1">
+<aside class="w-64 flex-shrink-0 border-r border-solid border-border-light dark:border-border-dark p-6 hidden lg:block">
+<div class="flex h-full min-h-[700px] flex-col gap-8">
+<div class="flex flex-col">
+<h1 class="text-base font-bold">Filters</h1>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Refine your view</p>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-base">store</span>
+                            Buyer
+                        </label>
+<select class="w-full rounded border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:ring-primary focus:border-primary text-sm">
+<option>All Buyers</option>
+<option>Global Mart</option>
+<option>Fresh Foods Inc.</option>
+<option>Mega Retail</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-base">category</span>
+                            Category
+                        </label>
+<select class="w-full rounded border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:ring-primary focus:border-primary text-sm">
+<option>All Categories</option>
+<option>Produce</option>
+<option>Dairy</option>
+<option>Frozen Goods</option>
+</select>
+</div>
+<div class="flex flex-col gap-3">
+<p class="text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-base">label</span>
+                            Status
+                        </p>
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-primary/20 px-4">
+<p class="text-primary text-sm font-medium">New</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-background-light dark:bg-card-dark/50 border border-border-light dark:border-border-dark px-4">
+<p class="text-sm font-medium">In Progress</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-background-light dark:bg-card-dark/50 border border-border-light dark:border-border-dark px-4">
+<p class="text-sm font-medium">Won</p>
+</div>
+<div class="flex h-8 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-background-light dark:bg-card-dark/50 border border-border-light dark:border-border-dark px-4">
+<p class="text-sm font-medium">Lost</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 p-6 lg:p-8">
+<div class="flex items-center justify-between pb-6">
+<h2 class="text-2xl font-bold tracking-tight">Active RFPs</h2>
+<button class="bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-base">add_circle</span>
+                    New RFP
+                </button>
+</div>
+<div class="grid grid-cols-1 gap-6 @md:grid-cols-2 @4xl:grid-cols-3">
+<div class="flex flex-col gap-4 rounded-lg bg-card-light dark:bg-card-dark p-5 border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">RFP-2024-08A</p>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Global Mart</p>
+</div>
+<div class="relative size-14">
+<svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-slate-200 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="progress-ring-circle stroke-lime" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="15" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-lime">85%</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm mb-4">
+<p class="text-text-light/60 dark:text-text-dark/60 flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Due: Aug 15, 2024</p>
+<div class="flex h-6 items-center justify-center gap-x-1 rounded-full bg-lime/20 px-2.5">
+<p class="text-lime text-xs font-medium">Healthy</p>
+</div>
+</div>
+<a class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-base">visibility</span>
+                    View RFP
+                </a>
+</div>
+<div class="flex flex-col gap-4 rounded-lg bg-card-light dark:bg-card-dark p-5 border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">RFP-2024-07C</p>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Fresh Foods Inc.</p>
+</div>
+<div class="relative size-14">
+<svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-slate-200 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="progress-ring-circle stroke-teal" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="38" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-teal">62%</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm mb-4">
+<p class="text-text-light/60 dark:text-text-dark/60 flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Due: Aug 12, 2024</p>
+<div class="flex h-6 items-center justify-center gap-x-1 rounded-full bg-lime/20 px-2.5">
+<p class="text-lime text-xs font-medium">Healthy</p>
+</div>
+</div>
+<a class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-base">visibility</span>
+                    View RFP
+                </a>
+</div>
+<div class="flex flex-col gap-4 rounded-lg bg-card-light dark:bg-card-dark p-5 border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">RFP-2024-06B</p>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Mega Retail</p>
+</div>
+<div class="relative size-14">
+<svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-slate-200 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="progress-ring-circle stroke-coral" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="55" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-coral">45%</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm mb-4">
+<p class="text-text-light/60 dark:text-text-dark/60 flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Due: Aug 10, 2024</p>
+<div class="flex h-6 items-center justify-center gap-x-1 rounded-full bg-coral/20 px-2.5">
+<p class="text-coral text-xs font-medium">Low</p>
+</div>
+</div>
+<a class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-base">visibility</span>
+                    View RFP
+                </a>
+</div>
+<div class="flex flex-col gap-4 rounded-lg bg-card-light dark:bg-card-dark p-5 border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">RFP-2024-05E</p>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Corner Grocers</p>
+</div>
+<div class="relative size-14">
+<svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-slate-200 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="progress-ring-circle stroke-lime" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="22" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-lime">78%</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm mb-4">
+<p class="text-text-light/60 dark:text-text-dark/60 flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Due: Aug 5, 2024</p>
+<div class="flex h-6 items-center justify-center gap-x-1 rounded-full bg-lime/20 px-2.5">
+<p class="text-lime text-xs font-medium">Healthy</p>
+</div>
+</div>
+<a class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-base">visibility</span>
+                    View RFP
+                </a>
+</div>
+<div class="flex flex-col gap-4 rounded-lg bg-card-light dark:bg-card-dark p-5 border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">RFP-2024-04D</p>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Super Chain</p>
+</div>
+<div class="relative size-14">
+<svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-slate-200 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="progress-ring-circle stroke-red-500" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="75" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-red-500">25%</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm mb-4">
+<p class="text-text-light/60 dark:text-text-dark/60 flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Due: Aug 2, 2024</p>
+<div class="flex h-6 items-center justify-center gap-x-1 rounded-full bg-red-500/20 px-2.5">
+<p class="text-red-500 text-xs font-medium">Out</p>
+</div>
+</div>
+<a class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-base">visibility</span>
+                    View RFP
+                </a>
+</div>
+<div class="flex flex-col gap-4 rounded-lg bg-card-light dark:bg-card-dark p-5 border border-border-light dark:border-border-dark shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-lg font-bold">RFP-2024-03F</p>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60">Daily Needs</p>
+</div>
+<div class="relative size-14">
+<svg class="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-slate-200 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="progress-ring-circle stroke-teal" cx="18" cy="18" fill="none" r="16" stroke-dasharray="100" stroke-dashoffset="33" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-teal">67%</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm mb-4">
+<p class="text-text-light/60 dark:text-text-dark/60 flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Due: Jul 28, 2024</p>
+<div class="flex h-6 items-center justify-center gap-x-1 rounded-full bg-coral/20 px-2.5">
+<p class="text-coral text-xs font-medium">Low</p>
+</div>
+</div>
+<a class="w-full bg-primary text-white font-medium text-sm py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-base">visibility</span>
+                    View RFP
+                </a>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

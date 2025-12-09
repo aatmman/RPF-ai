@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RFP Decision Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0da6f2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101c22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-card {
+            background-color: rgba(28, 42, 50, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gauge-background {
+            stroke: #e5e7eb;
+        }
+        .dark .gauge-background {
+            stroke: #374151;
+        }
+        .gauge-foreground {
+            stroke: #40E0D0;stroke-dasharray: 283;
+            stroke-dashoffset: 56.6;transition: stroke-dashoffset 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#333333] dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 w-full border-b border-gray-200/50 bg-white/60 backdrop-blur-md dark:border-gray-700/50 dark:bg-background-dark/60">
+<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<span class="text-xl font-bold text-[#0d171c] dark:text-white">PricingAI</span>
+</div>
+<nav class="flex items-center gap-2">
+<a class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100" href="#">
+<span class="material-symbols-outlined text-base">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-base">receipt_long</span>
+                    RFP Detail
+                </a>
+<a class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100" href="#">
+<span class="material-symbols-outlined text-base">history</span>
+                    Run History
+                </a>
+<a class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100" href="#">
+<span class="material-symbols-outlined text-base">settings</span>
+                    Settings
+                </a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="relative rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute right-2 top-2 block h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+<img alt="User avatar" class="h-9 w-9 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgxiW9VTqNgSnzS50WijPu62-eFz3gwxdWl37Wg7dmOUee5VXSo2cuj6tNsVvT0TB_vGxZrQtC7TjaCG03eqi_i2ZGCIDP8Z2fGX0WLfPZsQdL-o1cGUvhhZcl72pvLBpwhxYSU8ER7Y5sWiI682s4uYYxPYZ5rM9Nq_Aa7AxgWMeKsE7H71NJUL6xSZAtxJSlHtxsV5u5FxiL3HPmC5zS0anNG6EH-MeJBJoPVSxpzyOie98Ql0eCnKAn_dhqhOWUTVFFQ0uxVSg"/>
+</div>
+</div>
+</header>
+<div class="p-4 sm:p-6 lg:p-8">
+<div class="mx-auto w-full max-w-7xl px-4">
+<div class="flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-[#0d171c] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">RFP Decision</p>
+<p class="text-[#49819c] dark:text-gray-400 text-base font-normal leading-normal">Review the AI recommendation for the incoming Request for Proposal.</p>
+</div>
+<div class="flex flex-col gap-2 sm:flex-row">
+<button class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-gray-200 px-4 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+                        Back to Dashboard
+                    </button>
+<button class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-gray-200 px-4 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+<span class="material-symbols-outlined text-base">manage_history</span>
+                        Open Run History
+                    </button>
+<button class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-gray-200 px-4 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+<span class="material-symbols-outlined text-base">feedback</span>
+                        Give Feedback
+                    </button>
+</div>
+</div>
+</div>
+<main class="mx-auto w-full max-w-7xl flex-1 px-4 py-6">
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+<div class="flex flex-col gap-6">
+<div class="glass-card flex h-full flex-col rounded-lg p-6 shadow-lg">
+<h2 class="text-[#0d171c] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">RFP Summary</h2>
+<div class="flex items-center gap-4 mb-4">
+<img class="h-16 w-16 rounded-full object-cover" data-alt="Costco Wholesale company logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgxiW9VTqNgSnzS50WijPu62-eFz3gwxdWl37Wg7dmOUee5VXSo2cuj6tNsVvT0TB_vGxZrQtC7TjaCG03eqi_i2ZGCIDP8Z2fGX0WLfPZsQdL-o1cGUvhhZcl72pvLBpwhxYSU8ER7Y5sWiI682s4uYYxPYZ5rM9Nq_Aa7AxgWMeKsE7H71NJUL6xSZAtxJSlHtxsV5u5FxiL3HPmC5zS0anNG6EH-MeJBJoPVSxpzyOie98Ql0eCnKAn_dhqhOWUTVFFQ0uxVSg"/>
+<div>
+<p class="text-[#49819c] dark:text-gray-400 text-sm font-normal">Buyer Information</p>
+<p class="text-[#0d171c] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Costco Wholesale</p>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-base"><strong class="font-medium text-[#0d171c] dark:text-gray-300">Total Quantity Requested:</strong> 2,500 units</p>
+<div>
+<p class="font-medium text-[#0d171c] dark:text-gray-300 mb-1">Key Requirements:</p>
+<p class="text-[#49819c] dark:text-gray-400 text-sm max-h-24 overflow-y-auto">
+                                    Adherence to packaging standard B, delivery by Q3 end, and a 2-year warranty clause. Must provide detailed logistics plan and comply with all international shipping regulations.
+                                </p>
+</div>
+</div>
+<div class="mt-auto pt-4">
+<div class="flex items-center gap-2">
+<p class="font-medium text-[#0d171c] dark:text-gray-300 text-sm">Lead Source:</p>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-xs font-medium leading-normal">Direct Inquiry</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="glass-card flex flex-col rounded-lg p-6 shadow-lg border-2 border-primary">
+<h2 class="text-[#0d171c] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">AI Recommendation</h2>
+<div class="flex flex-col items-center justify-center flex-1 gap-4 text-center">
+<div class="relative h-48 w-48">
+<svg class="h-full w-full" viewBox="0 0 100 100">
+<circle class="gauge-background" cx="50" cy="50" fill="transparent" r="45" stroke-width="10"></circle>
+<circle class="gauge-foreground" cx="50" cy="50" fill="transparent" r="45" stroke-linecap="round" stroke-width="10" transform="rotate(-90 50 50)"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-bold text-[#40E0D0]">80%</span>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Win Probability</span>
+</div>
+</div>
+<div class="w-full space-y-3">
+<p class="text-base"><strong class="font-medium text-[#0d171c] dark:text-gray-300">Primary SKU:</strong> ELE-HDTV-55-2024</p>
+<p class="text-base"><strong class="font-medium text-[#0d171c] dark:text-gray-300">Scenario:</strong> Volume Discount Tier 3</p>
+<div class="text-2xl font-bold text-[#0d171c] dark:text-white">$1,250,000.00 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(Total Price)</span></div>
+<div class="text-lg font-semibold text-green-600 dark:text-green-400">$215,000.00 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(Est. Margin)</span></div>
+</div>
+</div>
+<div class="mt-6 flex flex-col gap-2">
+<button class="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 text-base font-bold text-white shadow-md transition-all hover:bg-primary/90">Accept Recommendation</button>
+<button class="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary/20 px-6 text-base font-bold text-primary shadow-sm transition-all hover:bg-primary/30">Adjust Pricing</button>
+<button class="flex h-10 w-full items-center justify-center gap-2 rounded-lg px-6 text-sm font-medium text-gray-500 dark:text-gray-400 transition-all hover:bg-gray-200 dark:hover:bg-gray-700">Send Feedback</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="glass-card flex h-full flex-col rounded-lg p-6 shadow-lg">
+<h2 class="text-[#0d171c] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Inventory &amp; Logistics</h2>
+<div class="mb-4">
+<label class="mb-1 block text-sm font-medium text-[#49819c] dark:text-gray-400">Stock Level (vs. Request)</label>
+<div class="h-3 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+<div class="h-3 rounded-full bg-lime-500" style="width: 75%;"></div>
+</div>
+<p class="mt-1 text-xs text-right text-gray-500 dark:text-gray-400">3,750 / 5,000 units available</p>
+</div>
+<div class="space-y-3 mb-6">
+<p class="text-base"><strong class="font-medium text-[#0d171c] dark:text-gray-300">Warehouse:</strong> East-01</p>
+<p class="text-base"><strong class="font-medium text-[#0d171c] dark:text-gray-300">Rack ID:</strong> B32-C04</p>
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-lime-500/20 px-3">
+<p class="text-lime-600 dark:text-lime-400 text-xs font-medium">In Stock</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-gray-500/20 px-3">
+<p class="text-gray-600 dark:text-gray-400 text-xs font-medium">No Hold</p>
+</div>
+</div>
+</div>
+<h3 class="text-base font-semibold text-[#0d171c] dark:text-gray-300 mb-3">Lead Timeline</h3>
+<ul class="space-y-4 border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+<li class="relative">
+<div class="absolute -left-[22px] top-1 h-3 w-3 rounded-full bg-primary"></div>
+<p class="text-sm font-medium text-[#0d171c] dark:text-white">RFP Received</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Today</p>
+</li>
+<li class="relative">
+<div class="absolute -left-[22px] top-1 h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+<p class="text-sm font-medium text-[#0d171c] dark:text-white">Initial Contact</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">2 days ago</p>
+</li>
+<li class="relative">
+<div class="absolute -left-[22px] top-1 h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+<p class="text-sm font-medium text-[#0d171c] dark:text-white">Lead Created</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">5 days ago</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="lg:col-span-3">
+<div class="glass-card flex flex-col rounded-lg p-6 shadow-lg">
+<h2 class="text-[#0d171c] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Decision Rationale</h2>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+<div>
+<p class="text-[#49819c] dark:text-gray-400 leading-relaxed">The recommendation is based on a high match score between the buyer's requirements and the selected SKU's specifications, including warranty and technical compliance. The pricing scenario leverages a volume discount that maintains a healthy margin while being highly competitive, significantly boosting the win probability based on historical data with similar clients in this sector.</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 mt-1">check_circle</span>
+<div>
+<h4 class="font-semibold text-[#0d171c] dark:text-gray-200">Why this SKU</h4>
+<p class="text-sm text-[#49819c] dark:text-gray-400">Perfect match for technical requirements and has a high customer satisfaction rating.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 mt-1">check_circle</span>
+<div>
+<h4 class="font-semibold text-[#0d171c] dark:text-gray-200">Why this Scenario</h4>
+<p class="text-sm text-[#49819c] dark:text-gray-400">Competitive pricing aligns with market rates for this volume, historically leading to a &gt;75% win rate.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-1">warning</span>
+<div>
+<h4 class="font-semibold text-[#0d171c] dark:text-gray-200">Risk Flags</h4>
+<p class="text-sm text-[#49819c] dark:text-gray-400">Delivery timeline is tight; requires expedited logistics coordination post-acceptance.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

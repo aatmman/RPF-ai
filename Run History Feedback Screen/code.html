@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Run History / Feedback Screen (Refined Navigation)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0da6f2",
+              "background-light": "#f5f7f8",
+              "background-dark": "#101c22",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-icons-outlined, .material-symbols-outlined {
+            font-size: inherit;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex flex-col h-screen">
+<header class="bg-white dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-800 px-6">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 text-primary" href="#">
+<span class="material-icons-outlined text-4xl">hexagon</span>
+<span class="text-xl font-bold text-gray-800 dark:text-white">RFP.ai</span>
+</a>
+<nav class="hidden md:flex items-center gap-2">
+<a class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span class="font-medium">RFP Detail</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">history</span>
+<span class="font-medium">Run History</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary/80">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+<img alt="User avatar" class="w-10 h-10 rounded-full" data-alt="User avatar of a man with short brown hair and glasses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOHn7ZWzAP3sq_MT6zSEjFo8BO8ov5E9UJ1lkOr2o8aMj0wxksSS3-aaI9kRzpfskIgocVZtlwaClvnYFydF1ljTPTnXyB4hKIEv-JGa1Kr7t8ZrFT8DoEnD3sUo9d0YM3YPU-3At21hNkgzXld9zdXB95ieoH_qiOBNyGQKiI_Ms2V61uVkZGNAVMZOL6n0rW4qAxexWJ56RHA0aVGBlVRZm8-bSabZjtFsnE7w41cIxVb81VbmkqCi2L3gdU-qUrxMzUUwCbPIM"/>
+</div>
+</div>
+</header>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="flex-1">
+<header class="mb-8">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Run History &amp; Feedback</h1>
+<p class="text-gray-500 dark:text-gray-400 mt-1">Review performance and feedback for past RFP decisions.</p>
+</header>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+<div class="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-blue-400 to-primary text-white shadow-lg">
+<span class="material-icons-outlined absolute -right-4 -bottom-4 text-8xl opacity-10">description</span>
+<h3 class="text-sm font-medium opacity-80">Total RFPs</h3>
+<p class="text-4xl font-bold mt-2">1,284</p>
+<div class="flex items-center text-sm mt-2 opacity-90">
+<span class="material-icons-outlined text-green-300">trending_up</span>
+<span class="ml-1">+12.5% this month</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-green-400 to-teal-500 text-white shadow-lg">
+<span class="material-icons-outlined absolute -right-4 -bottom-4 text-8xl opacity-10">emoji_events</span>
+<h3 class="text-sm font-medium opacity-80">Win Rate</h3>
+<p class="text-4xl font-bold mt-2">72.3%</p>
+<div class="flex items-center text-sm mt-2 opacity-90">
+<span class="material-icons-outlined text-green-200">trending_up</span>
+<span class="ml-1">+2.1% this month</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-purple-400 to-indigo-500 text-white shadow-lg">
+<span class="material-icons-outlined absolute -right-4 -bottom-4 text-8xl opacity-10">monetization_on</span>
+<h3 class="text-sm font-medium opacity-80">Average Margin</h3>
+<p class="text-4xl font-bold mt-2">24.1%</p>
+<div class="flex items-center text-sm mt-2 opacity-90">
+<span class="material-icons-outlined text-red-200">trending_down</span>
+<span class="ml-1">-0.5% this month</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg p-6 bg-gradient-to-br from-orange-400 to-pink-500 text-white shadow-lg">
+<span class="material-icons-outlined absolute -right-4 -bottom-4 text-8xl opacity-10">thumb_up_alt</span>
+<h3 class="text-sm font-medium opacity-80">Feedback Score</h3>
+<p class="text-4xl font-bold mt-2">94</p>
+<div class="flex items-center text-sm mt-2 opacity-90">
+<span class="material-icons-outlined text-green-200">trending_up</span>
+<span class="ml-1">+5 pts this month</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-900/50 rounded-lg shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4 font-semibold" scope="col">Date</th>
+<th class="px-6 py-4 font-semibold" scope="col">RFP ID</th>
+<th class="px-6 py-4 font-semibold" scope="col">Buyer</th>
+<th class="px-6 py-4 font-semibold" scope="col">Win Probability</th>
+<th class="px-6 py-4 font-semibold" scope="col">Feedback</th>
+<th class="px-6 py-4 font-semibold text-right" scope="col">Score</th>
+<th class="px-6 py-4 font-semibold text-center" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors duration-150">
+<td class="px-6 py-4 whitespace-nowrap">2024-05-20</td>
+<td class="px-6 py-4 font-mono text-gray-500 dark:text-gray-400">RFP-983A1</td>
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Innovate Corp</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-gradient-to-r from-teal-400 to-green-500 h-2 rounded-full" style="width: 92%"></div>
+</div>
+<span class="font-medium">92%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200">Win</span>
+</td>
+<td class="px-6 py-4 text-right font-semibold text-gray-900 dark:text-white">98</td>
+<td class="px-6 py-4 text-center">
+<a class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-base">visibility</span> View Decision
+                                </a>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors duration-150">
+<td class="px-6 py-4 whitespace-nowrap">2024-05-18</td>
+<td class="px-6 py-4 font-mono text-gray-500 dark:text-gray-400">RFP-B45C2</td>
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Quantum Solutions</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-gradient-to-r from-orange-400 to-red-500 h-2 rounded-full" style="width: 25%"></div>
+</div>
+<span class="font-medium">25%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200">Loss</span>
+</td>
+<td class="px-6 py-4 text-right font-semibold text-gray-900 dark:text-white">45</td>
+<td class="px-6 py-4 text-center">
+<a class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-base">visibility</span> View Decision
+                                </a>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors duration-150">
+<td class="px-6 py-4 whitespace-nowrap">2024-05-17</td>
+<td class="px-6 py-4 font-mono text-gray-500 dark:text-gray-400">RFP-8D1F9</td>
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Apex Industries</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-2 rounded-full" style="width: 55%"></div>
+</div>
+<span class="font-medium">55%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200">Loss</span>
+</td>
+<td class="px-6 py-4 text-right font-semibold text-gray-900 dark:text-white">62</td>
+<td class="px-6 py-4 text-center">
+<a class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-base">visibility</span> View Decision
+                                </a>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors duration-150">
+<td class="px-6 py-4 whitespace-nowrap">2024-05-15</td>
+<td class="px-6 py-4 font-mono text-gray-500 dark:text-gray-400">RFP-E7G3H</td>
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">NextGen Logistics</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-gradient-to-r from-teal-400 to-green-500 h-2 rounded-full" style="width: 85%"></div>
+</div>
+<span class="font-medium">85%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200">Win</span>
+</td>
+<td class="px-6 py-4 text-right font-semibold text-gray-900 dark:text-white">91</td>
+<td class="px-6 py-4 text-center">
+<a class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-base">visibility</span> View Decision
+                                </a>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors duration-150">
+<td class="px-6 py-4 whitespace-nowrap">2024-05-12</td>
+<td class="px-6 py-4 font-mono text-gray-500 dark:text-gray-400">RFP-F2K5L</td>
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Innovate Corp</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-2 rounded-full" style="width: 68%"></div>
+</div>
+<span class="font-medium">68%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200">Win</span>
+</td>
+<td class="px-6 py-4 text-right font-semibold text-gray-900 dark:text-white">88</td>
+<td class="px-6 py-4 text-center">
+<a class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline" href="#">
+<span class="material-symbols-outlined text-base">visibility</span> View Decision
+                                </a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-80 flex-shrink-0">
+<div class="sticky top-8 bg-white dark:bg-gray-900/50 rounded-lg p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Filters</h3>
+<button class="text-sm text-primary hover:underline">Clear all</button>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Date Range</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons-outlined text-gray-400">calendar_today</span>
+</div>
+<input class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-md shadow-sm focus:ring-primary focus:border-primary text-sm" type="text" value="Last 30 days"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Buyer</label>
+<select class="w-full border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-md shadow-sm focus:ring-primary focus:border-primary text-sm">
+<option>All Buyers</option>
+<option>Innovate Corp</option>
+<option>Quantum Solutions</option>
+<option>Apex Industries</option>
+<option>NextGen Logistics</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Feedback Label</label>
+<div class="space-y-2">
+<label class="flex items-center">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-600 dark:text-gray-300">All</span>
+</label>
+<label class="flex items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-600 dark:text-gray-300">Win</span>
+</label>
+<label class="flex items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-600 dark:text-gray-300">Loss</span>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
+<button class="w-full bg-primary text-white font-bold py-2.5 px-4 rounded-md shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-background-dark" type="button">
+                                Apply Filters
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
