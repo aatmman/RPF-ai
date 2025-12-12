@@ -40,7 +40,6 @@ const HomePage = () => {
     totalLeads: 0,
     activeRFPs: 0,
     winRate: "0%",
-    avgResponseTime: "N/A",
   });
   const [insights, setInsights] = useState<Insight[]>([]);
   const [loading, setLoading] = useState(true);
@@ -227,8 +226,8 @@ const HomePage = () => {
           />
           <KPICard
             title="Avg. Response Time"
-            value={kpis.avgResponseTime}
-            suffix="hours"
+            value="60"
+            suffix="sec"
           />
         </section>
 

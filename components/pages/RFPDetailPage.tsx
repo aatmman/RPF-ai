@@ -34,7 +34,8 @@ interface RfpRun {
   rack_id?: string;
   stock_location?: string;
   estimated_win_probability?: number;
-  ai_summary?: string;
+  ai_summary?: string | null;
+  ai_output?: string | null;
   decision_reason?: string;
   decision_rationale?: string;
   feedback_label?: string;
