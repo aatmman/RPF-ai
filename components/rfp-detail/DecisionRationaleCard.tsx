@@ -22,35 +22,45 @@ type AiNarrative = {
 
 /**
  * Parses the AI agent response from n8n.
- * Handles both array format [{"output": "..."}] and direct JSON string format.
+ * Handles:
+ * - Plain JSON object string
+ * - JSON string wrapped in markdown code fences (```json ... ```)
+ * - JSON array containing { "output": "<that json or fenced json>" }
  */
 function parseAiOutput(raw?: string | null): AiNarrative {
   if (!raw) return {};
 
-  try {
-    let text = raw.trim();
+  let text = raw.trim();
 
-    // If it's an array JSON, unwrap the first element.output
+  // 1) Unwrap JSON array with { output: "..." }
+  try {
     if (text.startsWith('[')) {
       const arr = JSON.parse(text);
       const first = Array.isArray(arr) ? arr[0] : null;
       if (first && typeof first.output === 'string') {
-        text = first.output;
+        text = first.output.trim();
       }
     }
+  } catch {
+    // ignore, keep original text
+  }
 
-    // Remove fences if any
-    text = text.replace(/```/gi, '').trim();
+  // 2) Strip markdown code fences like ```json ... ```
+  text = text.replace(/```json/gi, '').replace(/```/g, '').trim();
 
-    // Now text should be a JSON string like {"ai_summary": "...", ...}
+  // 3) Try to parse the remaining JSON object
+  try {
     const parsed = JSON.parse(text) as AiNarrative;
     return {
       ai_summary: parsed.ai_summary?.trim(),
       decision_reason: parsed.decision_reason?.trim(),
       one_liner: parsed.one_liner?.trim(),
     };
-  } catch (e) {
-    return {};
+  } catch {
+    // If still not valid JSON, fall back by returning everything as ai_summary
+    return {
+      ai_summary: text,
+    };
   }
 }
 
