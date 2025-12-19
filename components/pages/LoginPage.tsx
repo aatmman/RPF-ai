@@ -1,16 +1,31 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Users, Package, Target } from "lucide-react";
+import { Cog, Box, Target } from "lucide-react";
 import AuthLayout from "@/components/layout/AuthLayout";
 import { login, DEMO_EMAIL, DEMO_PASSWORD } from "@/lib/demoAuth";
+
+// Sketchy box component for consistent styling
+const SketchyBox = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <div className={`bg-white border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${className}`}>
+    {children}
+  </div>
+);
+
+// Feature banner component
+const FeatureBanner = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
+  <SketchyBox className="flex items-center space-x-3 px-4 py-3">
+    <div className="w-8 h-8 flex items-center justify-center">
+      <Icon className="w-6 h-6 text-orange-500 stroke-[2.5]" />
+    </div>
+    <span className="font-bold text-black text-base">{text}</span>
+  </SketchyBox>
+);
 
 const LoginPage = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [emailCopied, setEmailCopied] = useState(false);
-  const [passwordCopied, setPasswordCopied] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,133 +39,116 @@ const LoginPage = () => {
     }
   };
 
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(DEMO_EMAIL);
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 2000);
-    } catch (e) {
-      console.error('Failed to copy email', e);
-    }
-  };
-
-  const handleCopyPassword = async () => {
-    try {
-      await navigator.clipboard.writeText(DEMO_PASSWORD);
-      setPasswordCopied(true);
-      setTimeout(() => setPasswordCopied(false), 2000);
-    } catch (e) {
-      console.error('Failed to copy password', e);
-    }
+  const handleAutoFill = () => {
+    setEmail(DEMO_EMAIL);
+    setPassword(DEMO_PASSWORD);
   };
 
   return (
     <AuthLayout>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full max-w-7xl">
-        {/* Left side - Hero text */}
-        <div className="space-y-8">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground leading-tight">
-            Win FMCG RFPs with <br />
-            <span className="gradient-text">Agentic AI</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-lg">
-            Our multi-agent system analyzes RFPs, optimizes pricing, and learns from your feedback to craft winning proposals, faster.
-          </p>
-          <ul className="space-y-4">
-            <li className="flex items-center space-x-3">
-              <Users className="w-5 h-5 text-secondary" />
-              <span className="font-medium">Multi-agent analysis</span>
-            </li>
-            <li className="flex items-center space-x-3">
-              <Package className="w-5 h-5 text-secondary" />
-              <span className="font-medium">Stock-aware pricing</span>
-            </li>
-            <li className="flex items-center space-x-3">
-              <Target className="w-5 h-5 text-secondary" />
-              <span className="font-medium">Feedback-driven learning</span>
-            </li>
-          </ul>
-        </div>
-        
-        {/* Right side - Login form */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="w-full max-w-md bg-background-light border-[3px] border-foreground rounded-lg p-3 shadow-brutal dotted-bg">
-            <div className="bg-background-light rounded-lg p-6 border border-border">
-              <h2 className="text-2xl font-bold text-center text-foreground mb-2">
-                Login / Sign up
-              </h2>
-              <p className="text-xs text-center text-muted-foreground mb-6">
-                No real account needed; this is a demo login.
-              </p>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground">
-                    Email
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@company.com"
-                      className="block w-full rounded-lg border border-border bg-background-light p-3 shadow-sm focus:border-secondary focus:ring-secondary text-sm placeholder:text-muted-foreground"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-foreground">
-                    Password
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="password"
-                      name="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••"
-                      className="block w-full rounded-lg border border-border bg-background-light p-3 shadow-sm focus:border-secondary focus:ring-secondary text-sm placeholder:text-muted-foreground"
-                    />
-                  </div>
-                </div>
-                
-                <button type="submit" className="btn-primary">
-                  Login
-                </button>
-                
-                {error && (
-                  <p className="text-sm text-red-600 text-center">{error}</p>
-                )}
-                
-                <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-700 space-y-2">
-                  <p className="font-semibold">Demo credentials for judging</p>
-                  <div className="flex items-center justify-between gap-2">
-                    <p>Email: {DEMO_EMAIL}</p>
-                    <button
-                      type="button"
-                      onClick={handleCopyEmail}
-                      className="shrink-0 rounded px-3 py-1 text-xs font-medium bg-slate-800 text-white hover:bg-slate-900 transition-colors"
-                    >
-                      {emailCopied ? 'Copied!' : 'Copy'}
-                    </button>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p>Password: {DEMO_PASSWORD}</p>
-                    <button
-                      type="button"
-                      onClick={handleCopyPassword}
-                      className="shrink-0 rounded px-3 py-1 text-xs font-medium bg-slate-800 text-white hover:bg-slate-900 transition-colors"
-                    >
-                      {passwordCopied ? 'Copied!' : 'Copy'}
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start w-full max-w-6xl">
+        {/* Left side - Hero content */}
+        <div className="space-y-4">
+          {/* Main headline box */}
+          <SketchyBox className="p-5 lg:p-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-black leading-tight tracking-tight">
+              Win FMCG RFPs
+              <br />
+              with{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-orange-600">Agentic AI</span>
+                {/* Orange marker highlight effect */}
+                <span className="absolute bottom-1 left-0 right-0 h-3 bg-orange-400/60 -z-0 -rotate-1" />
+              </span>
+            </h1>
+          </SketchyBox>
+
+          {/* Subtitle box */}
+          <SketchyBox className="p-4">
+            <p className="text-gray-700 text-sm lg:text-base leading-relaxed">
+              Our multi-agent system analyzes RFPs, optimizes pricing, and learns from your feedback to craft winning proposals, faster.
+            </p>
+          </SketchyBox>
+
+          {/* Feature banners */}
+          <div className="space-y-2">
+            <FeatureBanner icon={Cog} text="Multi-agent analysis" />
+            <FeatureBanner icon={Box} text="Stock-aware pricing" />
+            <FeatureBanner icon={Target} text="Feedback-driven learning" />
           </div>
+        </div>
+
+        {/* Right side - Login card */}
+        <div className="flex justify-center lg:justify-end">
+          <SketchyBox className="w-full max-w-sm p-5 lg:p-6">
+            <h2 className="text-xl lg:text-2xl font-black text-center text-black mb-1">
+              Login / Sign up
+            </h2>
+            <p className="text-gray-500 text-xs text-center mb-4">
+              No real account needed, this is a demo login.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="email" className="block text-sm font-bold text-black mb-1.5">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@company.com"
+                  className="block w-full border-[3px] border-black bg-white p-2.5 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-1"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-bold text-black mb-1.5">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="block w-full border-[3px] border-black bg-white p-2.5 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-1"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150"
+              >
+                Login
+              </button>
+
+              {error && (
+                <p className="text-sm text-red-600 text-center">{error}</p>
+              )}
+
+              {/* Demo credentials box */}
+              <SketchyBox className="mt-4 p-3">
+                <h3 className="font-bold text-black text-sm mb-2">Demo credentials</h3>
+                <p className="text-xs text-gray-700 mb-1">
+                  Email: <span className="font-medium">{DEMO_EMAIL}</span>
+                </p>
+                <p className="text-xs text-gray-700 mb-3">
+                  Password: <span className="font-medium">{DEMO_PASSWORD}</span>
+                </p>
+                <button
+                  type="button"
+                  onClick={handleAutoFill}
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-150 text-sm"
+                >
+                  Auto-fill Demo Credentials
+                </button>
+              </SketchyBox>
+            </form>
+          </SketchyBox>
         </div>
       </div>
     </AuthLayout>

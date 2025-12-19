@@ -51,31 +51,41 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-background-light/80 backdrop-blur-md">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div className="flex flex-col min-h-screen bg-background">
+      {/* Subtle decorative shapes */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-20 left-10 w-8 h-8 border-2 border-warning/30 rotate-12" />
+        <div className="absolute top-40 right-20 w-6 h-6 border-2 border-warning/20 rounded-full" />
+        <div className="absolute bottom-40 left-1/4 w-4 h-4 bg-warning/10 rotate-45" />
+        <div className="absolute top-1/3 right-1/3 w-5 h-5 border-2 border-warning/20 rotate-45" />
+      </div>
+
+      <header className="sticky top-0 z-50 w-full bg-white border-b-2 border-foreground">
+        <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
           {/* Left: Logo + App Name */}
-          <Link href="/home" className="flex items-center space-x-2">
-            <Sparkles className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold tracking-tight text-foreground">RFP AI</span>
+          <Link href="/home" className="flex items-center space-x-2 group">
+            <div className="w-10 h-10 bg-warning border-2 border-foreground flex items-center justify-center shadow-sketch-sm group-hover:bg-warning/90 transition-colors">
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-black tracking-tight text-foreground">RFP AI</span>
           </Link>
           
           {/* Right: Nav Links + Avatar */}
-          <div className="flex items-center space-x-8">
-            <ul className="hidden md:flex items-center space-x-1 text-sm font-medium">
+          <div className="flex items-center space-x-6">
+            <ul className="hidden md:flex items-center space-x-1 text-sm font-bold">
               {navItems.map((item) => {
                 const isActive = router.pathname === item.path || 
-                  (item.name === "RFP Detail" && router.pathname === "/rfp-detail");
+                  (item.name === "RFP Detail" && (router.pathname === "/rfp-detail" || router.pathname.startsWith("/rfp/")));
                 
                 return (
                   <li key={item.name}>
                     <Link
                       href={item.path}
                       className={cn(
-                        "px-4 py-2 rounded-full transition-all",
+                        "px-3 py-1.5 transition-all border-2",
                         isActive 
-                          ? "bg-primary/10 text-primary font-semibold" 
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                          ? "bg-warning border-foreground text-white shadow-sketch-sm" 
+                          : "border-transparent text-muted-foreground hover:text-foreground hover:border-foreground/30"
                       )}
                     >
                       {item.name}
@@ -88,7 +98,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="w-10 h-10 rounded-full border-2 border-foreground bg-muted overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="w-10 h-10 border-2 border-foreground bg-muted overflow-hidden shadow-sketch-sm hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all cursor-pointer focus:outline-none"
               >
                 <img
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
@@ -99,11 +109,11 @@ const AppLayout = ({ children }: AppLayoutProps) => {
               
               {/* Dropdown Menu */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-border shadow-md rounded-md text-sm z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-white border-2 border-foreground shadow-sketch-sm text-sm z-50">
                   <div className="py-1">
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 text-foreground hover:bg-muted transition-colors"
+                      className="w-full text-left px-4 py-2 text-foreground hover:bg-warning/10 transition-colors"
                     >
                       Log out
                     </button>
@@ -115,7 +125,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         </nav>
       </header>
       
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow relative z-10">{children}</main>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import AppShell from "@/components/layout/AppShell";
+import AppLayout from "@/components/layout/AppLayout";
 import RFPSummaryCard from "@/components/rfp-detail/RFPSummaryCard";
 import AIRecommendationCard from "@/components/rfp-detail/AIRecommendationCard";
 import InventoryLogisticsCard from "@/components/rfp-detail/InventoryLogisticsCard";
@@ -141,37 +141,37 @@ const RFPDetailPage = () => {
 
   if (loading) {
     return (
-      <AppShell>
+      <AppLayout>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="text-center py-12">
             <p className="text-muted-foreground">Loading RFP...</p>
           </div>
         </div>
-      </AppShell>
+      </AppLayout>
     );
   }
 
   if (error || !rfp) {
     return (
-      <AppShell>
+      <AppLayout>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="text-center py-12">
-            <h1 className="text-2xl font-bold text-foreground mb-4">RFP Not Found</h1>
+            <h1 className="text-2xl font-black text-foreground mb-4">RFP Not Found</h1>
             <p className="text-muted-foreground mb-6">{error || 'The requested RFP could not be found.'}</p>
             <button
               onClick={() => router.push('/dashboard')}
-              className="bg-primary text-primary-foreground font-medium px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors"
+              className="btn-primary"
             >
               Back to Dashboard
             </button>
           </div>
         </div>
-      </AppShell>
+      </AppLayout>
     );
   }
 
   return (
-    <AppShell>
+    <AppLayout>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <RFPSummaryCard rfp={rfp} />
@@ -390,7 +390,7 @@ const RFPDetailPage = () => {
           </div>
         </div>
       </div>
-    </AppShell>
+    </AppLayout>
   );
 };
 

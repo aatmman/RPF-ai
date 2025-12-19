@@ -21,7 +21,7 @@ const FramedBox = ({
   return (
     <div
       className={cn(
-        "bg-white border-[3px] border-foreground rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+        "bg-white border-[3px] border-foreground rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
         showDottedBg && "dotted-bg",
         className
       )}

@@ -186,8 +186,8 @@ const HomePage = () => {
           <div className="card-rfp">
             <div className="flex items-start justify-between">
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                  Live RFP Signals & Win Performance
+                <h1 className="text-3xl md:text-4xl font-black text-foreground mb-3">
+                  Live RFP Signals & <span className="accent-underline">Win Performance</span>
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-2xl">
                   Our Agentic AI continuously scans the web for new RFP opportunities, 
@@ -199,7 +199,7 @@ const HomePage = () => {
                   <Search className="w-4 h-4 mr-2" />
                   Scan Now
                 </button>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-4 py-2 rounded-full">
+                <div className="flex items-center gap-2 text-sm text-white bg-warning px-4 py-2 border-2 border-foreground shadow-sketch-sm font-bold">
                   <Search className="w-4 h-4" />
                   <span>AI scanning active</span>
                 </div>
@@ -235,8 +235,8 @@ const HomePage = () => {
         <section className="mb-12">
           <div className="card-rfp">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-foreground">Live Leads</h2>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <h2 className="text-xl font-black text-foreground">Live Leads</h2>
+              <div className="flex items-center gap-2 text-sm text-foreground bg-muted px-3 py-1.5 border-2 border-foreground font-medium">
                 <Clock className="w-4 h-4" />
                 <span>Last scanned: {lastScanned}</span>
               </div>
@@ -248,38 +248,38 @@ const HomePage = () => {
               <div className="text-center py-8 text-muted-foreground">No leads found</div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full table-sketch">
                   <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">Lead Source</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">RFP Title</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">Buyer / Agency</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">Submission Deadline</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">Status</th>
-                      <th className="text-right py-3 px-4 text-sm font-semibold text-foreground">Actions</th>
+                    <tr>
+                      <th className="text-left py-3 px-4 text-sm font-bold text-foreground">Lead Source</th>
+                      <th className="text-left py-3 px-4 text-sm font-bold text-foreground">RFP Title</th>
+                      <th className="text-left py-3 px-4 text-sm font-bold text-foreground">Buyer / Agency</th>
+                      <th className="text-left py-3 px-4 text-sm font-bold text-foreground">Submission Deadline</th>
+                      <th className="text-left py-3 px-4 text-sm font-bold text-foreground">Status</th>
+                      <th className="text-right py-3 px-4 text-sm font-bold text-foreground">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {leads.map((lead) => (
-                      <tr key={lead.id} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
-                        <td className="py-3 px-4 text-sm text-muted-foreground">{lead.source_name || "N/A"}</td>
-                        <td className="py-3 px-4 text-sm font-medium text-foreground">{lead.title || "N/A"}</td>
-                        <td className="py-3 px-4 text-sm text-muted-foreground">{lead.buyer || "N/A"}</td>
-                        <td className="py-3 px-4 text-sm text-muted-foreground">{lead.deadline || "N/A"}</td>
-                        <td className="py-3 px-4">
-                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                            lead.status === 'new' ? 'bg-success-light text-success' :
-                            lead.status === 'in-progress' ? 'bg-warning-light text-warning' :
-                            lead.status === 'analyzed' ? 'bg-primary/10 text-primary' :
-                            'bg-secondary-50 text-secondary-600'
+                      <tr key={lead.id} className="hover:bg-warning/5 transition-colors">
+                        <td className="py-4 px-4 text-sm text-muted-foreground">{lead.source_name || "N/A"}</td>
+                        <td className="py-4 px-4 text-sm font-bold text-foreground">{lead.title || "N/A"}</td>
+                        <td className="py-4 px-4 text-sm text-muted-foreground">{lead.buyer || "N/A"}</td>
+                        <td className="py-4 px-4 text-sm text-muted-foreground">{lead.deadline || "N/A"}</td>
+                        <td className="py-4 px-4">
+                          <span className={`inline-flex items-center px-2.5 py-1 text-xs font-bold border-2 border-foreground ${
+                            lead.status === 'new' ? 'bg-success text-white' :
+                            lead.status === 'in-progress' ? 'bg-warning text-white' :
+                            lead.status === 'analyzed' ? 'bg-primary text-white' :
+                            'bg-error text-white'
                           }`}>
                             {getStatusLabel(lead.status || "new")}
                           </span>
                         </td>
-                        <td className="py-3 px-4">
+                        <td className="py-4 px-4">
                           <div className="flex items-center justify-end gap-2">
                             <button
-                              className="text-xs px-2 py-1 rounded bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                              className="text-xs px-3 py-1 border-2 border-foreground shadow-sketch-sm bg-warning text-white hover:bg-warning/90 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed font-bold"
                               disabled={lead.status === 'analyzed' || isAnalyzingId === lead.id}
                               onClick={() => handleAnalyzeLead(lead.id)}
                             >
@@ -302,17 +302,17 @@ const HomePage = () => {
 
         {/* Insights Section */}
         <section>
-          <h2 className="text-xl font-bold text-foreground mb-6">Insights & Activity</h2>
+          <h2 className="text-xl font-black text-foreground mb-6">Insights & Activity</h2>
           {insights.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {insights.map((insight, index) => (
                 <div key={index} className="card-rfp">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <insight.icon className="w-5 h-5 text-primary" />
+                    <div className="p-3 bg-warning border-2 border-foreground">
+                      <insight.icon className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-foreground mb-1">{insight.title}</h3>
+                      <h3 className="text-sm font-bold text-foreground mb-1">{insight.title}</h3>
                       <p className="text-sm text-muted-foreground">{insight.details}</p>
                     </div>
                   </div>

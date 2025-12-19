@@ -63,8 +63,8 @@
     /* Status colors */
     --success: 142 76% 36%;
     --success-light: 142 76% 94%;
-    --warning: 38 92% 50%;
-    --warning-light: 48 96% 89%;
+    --warning: 25 100% 50%;
+    --warning-light: 25 100% 95%;
     --error: 0 84% 60%;
     --error-light: 0 86% 97%;
     
@@ -141,31 +141,90 @@
   .shadow-brutal {
     box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 1);
   }
+  
+  /* Professional sketchy shadow - subtle version */
+  .shadow-sketch {
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.9);
+  }
+  
+  .shadow-sketch-sm {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Sketchy border styles */
+  .border-sketch {
+    @apply border-2 border-foreground;
+  }
+  
+  .border-sketch-thick {
+    @apply border-[3px] border-foreground;
+  }
+  
+  /* Orange accent underline */
+  .accent-underline {
+    position: relative;
+  }
+  
+  .accent-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: hsl(var(--warning) / 0.5);
+    z-index: -1;
+    transform: rotate(-0.5deg);
+  }
 }
 
 @layer components {
+  /* Professional sketchy card */
   .card-rfp {
-    @apply bg-card p-6 rounded-lg border-[3px] border-foreground shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+    @apply bg-card p-6 rounded-none border-2 border-foreground shadow-sketch;
+  }
+  
+  /* Sketchy section header */
+  .section-header {
+    @apply inline-block px-3 py-1 bg-warning border-2 border-foreground text-white font-bold text-sm mb-4;
   }
   
   .btn-primary {
-    @apply w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-md text-sm font-bold text-primary-foreground bg-[hsl(217,91%,60%)] hover:bg-[hsl(217,91%,55%)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[hsl(217,91%,60%)] transition-colors;
+    @apply w-full flex justify-center py-3 px-4 border-2 border-foreground rounded-none shadow-sketch-sm text-sm font-bold text-white bg-warning hover:bg-warning/90 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-150;
   }
   
   .btn-secondary {
-    @apply w-full inline-flex justify-center items-center py-2.5 px-4 border-2 border-foreground rounded-lg shadow-sm bg-background text-sm font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-muted transition-colors;
+    @apply w-full inline-flex justify-center items-center py-2.5 px-4 border-2 border-foreground rounded-none shadow-sketch-sm bg-background text-sm font-medium text-foreground hover:bg-warning/10 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-150;
   }
   
   .filter-chip {
-    @apply px-3 py-1.5 text-sm font-medium rounded-full transition-colors;
+    @apply px-3 py-1.5 text-sm font-medium rounded-none border-2 border-foreground transition-all;
   }
   
   .filter-chip-active {
-    @apply bg-primary/10 text-primary;
+    @apply bg-warning text-white shadow-sketch-sm;
   }
   
   .filter-chip-inactive {
-    @apply bg-muted text-muted-foreground hover:bg-muted/80;
+    @apply bg-card text-foreground hover:bg-muted;
+  }
+  
+  /* Sketchy input style */
+  .input-sketch {
+    @apply border-2 border-foreground rounded-none bg-card focus:ring-2 focus:ring-warning focus:ring-offset-1 focus:border-foreground;
+  }
+  
+  /* Sketchy table */
+  .table-sketch th {
+    @apply bg-warning/20 border-b-2 border-foreground;
+  }
+  
+  .table-sketch tr {
+    @apply border-b border-foreground/20;
+  }
+  
+  .table-sketch tr:hover {
+    @apply bg-warning/5;
   }
 }
 

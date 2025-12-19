@@ -225,27 +225,28 @@ const SettingsPage = () => {
   return (
     <AppLayout>
       <div className="container mx-auto px-6 py-12 max-w-5xl">
-        <h1 className="text-3xl font-bold text-foreground mb-8">Settings</h1>
+        <h1 className="text-3xl font-black text-foreground mb-8">Settings</h1>
         
         <div className="space-y-8">
           {/* Company Profile */}
           <section className="card-rfp">
-            <h2 className="text-xl font-bold text-foreground mb-6">Company Profile</h2>
+            <h2 className="text-xl font-black text-foreground mb-6">Company Profile</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="companyName">Company Name</Label>
+                <Label htmlFor="companyName" className="font-bold">Company Name</Label>
                 <Input
                   id="companyName"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Your company name"
+                  className="input-sketch"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="businessSegment">Business Segment</Label>
+                <Label htmlFor="businessSegment" className="font-bold">Business Segment</Label>
                 <Select value={businessSegment} onValueChange={setBusinessSegment}>
-                  <SelectTrigger>
+                  <SelectTrigger className="input-sketch">
                     <SelectValue placeholder="Select segment" />
                   </SelectTrigger>
                   <SelectContent>
@@ -258,29 +259,31 @@ const SettingsPage = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="region">Region</Label>
+                <Label htmlFor="region" className="font-bold">Region</Label>
                 <Input
                   id="region"
                   value={region}
                   onChange={(e) => setRegion(e.target.value)}
                   placeholder="Your operating region"
+                  className="input-sketch"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="contactEmail">Contact Email</Label>
+                <Label htmlFor="contactEmail" className="font-bold">Contact Email</Label>
                 <Input
                   id="contactEmail"
                   type="email"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
                   placeholder="admin@company.com"
+                  className="input-sketch"
                 />
               </div>
             </div>
             
             <div className="mt-6">
-              <Button variant="magic-primary" onClick={handleSaveProfile} disabled={saving}>
+              <Button variant="magic-primary" onClick={handleSaveProfile} disabled={saving} className="btn-primary">
                 {saving ? "Saving..." : "Save Profile"}
               </Button>
             </div>
@@ -288,7 +291,7 @@ const SettingsPage = () => {
 
           {/* Lead Sources */}
           <section className="card-rfp">
-            <h2 className="text-xl font-bold text-foreground mb-6">Lead Sources</h2>
+            <h2 className="text-xl font-black text-foreground mb-6">Lead Sources</h2>
             <p className="text-sm text-muted-foreground mb-4">
               Configure the RFP listing pages that the Sales Agent will scan for new opportunities.
             </p>

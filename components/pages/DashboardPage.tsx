@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AppShell from "@/components/layout/AppShell";
+import AppLayout from "@/components/layout/AppLayout";
 import KPICard from "@/components/shared/KPICard";
 import Sparkline from "@/components/shared/Sparkline";
 import StarRating from "@/components/shared/StarRating";
@@ -120,8 +120,13 @@ const DashboardPage = () => {
   };
 
   return (
-    <AppShell>
+    <AppLayout>
       <div className="container mx-auto px-6 py-12">
+        {/* Section Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-black text-foreground">Dashboard</h1>
+        </div>
+
         {/* KPI Cards */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <KPICard
@@ -152,13 +157,15 @@ const DashboardPage = () => {
 
         {/* Filters and RFP List */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          <FilterSidebar 
-            selectedBuyer={selectedBuyer}
-            onBuyerChange={setSelectedBuyer}
-          />
+          <aside className="card-rfp lg:col-span-1 h-fit">
+            <FilterSidebar 
+              selectedBuyer={selectedBuyer}
+              onBuyerChange={setSelectedBuyer}
+            />
+          </aside>
           
           <div className="lg:col-span-3">
-            <h2 className="text-xl font-bold text-foreground mb-4">Active RFPs</h2>
+            <h2 className="text-xl font-black text-foreground mb-4">Active RFPs</h2>
             {loading && (
               <div className="text-center py-12">
                 <p className="text-muted-foreground">Loading RFPs...</p>
@@ -184,7 +191,7 @@ const DashboardPage = () => {
           </div>
         </div>
       </div>
-    </AppShell>
+    </AppLayout>
   );
 };
 

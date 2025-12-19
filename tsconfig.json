@@ -27,6 +27,7 @@
     "node_modules",
     "rfp-ai-frontend-main",
     "rfp-ai-frontend-main with new home and setting",
+    "new-design-reference",
     ".next"
   ]
 }
